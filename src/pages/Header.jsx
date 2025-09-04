@@ -2,7 +2,6 @@ import React from "react";
 import Seo from "../components/Seo";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations/fadeIn";
-import { Link } from 'react-router-dom';
 
 const Header = () => (
   <>
@@ -54,17 +53,17 @@ const Header = () => (
           variants={fadeIn}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <Link to="/contact"
+          <a href="#contact"
             className="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-800 transition"
           >
             Me contacter
-          </Link>
-          <Link
-            to="/projects"
+          </a>
+          <a
+            href="#projects"
             className="bg-white text-blue-700 border border-blue-700 px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-50 transition"
           >
             Voir mes projets
-          </Link>
+          </a>
         </motion.div>
       </div>
     </header>

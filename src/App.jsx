@@ -1,34 +1,48 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
+import Header from './pages/Header';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Experiences from './pages/Experiences';
+import Skills from './pages/Skills';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-// ...import autres pages...
+import MentionsLegales from './pages/MentionsLegales';
 
-function AnimatedRoutes() {
-  const location = useLocation();
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
-        {/* ...autres routes... */}
-      </Routes>
-    </AnimatePresence>
-  );
-}
+
 
 export default function App() {
   return (
-    <Router>
+    <>
       <Navbar />
       <div className="pt-16">
-        <AnimatedRoutes />
+        <section id="accueil">
+          <Header />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="experiences">
+          <Experiences />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
+        <section id="mentions">
+          <MentionsLegales />
+        </section>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }

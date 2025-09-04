@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
@@ -9,7 +8,7 @@ const Footer = () => (
                 © {new Date().getFullYear()} Florian GIURGIU. Tous droits réservés.
             </span>
             <span>
-                <Link to="/mentions-legales" className="text-blue-600 underline">Mentions légales</Link>
+                <a href="#mentions" className="text-blue-600 underline">Mentions légales</a>
             </span>
             <span>
                 Hébergement : [Nom de l’hébergeur à compléter].
