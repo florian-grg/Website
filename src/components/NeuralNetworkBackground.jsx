@@ -26,12 +26,12 @@ export default function NeuralNetworkBackground() {
   // Génère les points une seule fois
   useEffect(() => {
     if (size.width > 0 && size.height > 0 && pointsRef.current.length === 0) {
-      const POINTS = 192;
+      const POINTS = 64;
       pointsRef.current = Array.from({ length: POINTS }, () => ({
-        x: Math.random() * size.width,
+        x: Math.random() < 0.5 ? 0 : size.width,
         y: Math.random() * size.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
+        vx: (Math.random() - 0.5) * 3,
+        vy: (Math.random() - 0.5) * 3
       }));
       mouseRef.current = { x: size.width / 2, y: size.height / 2 };
     }
@@ -57,7 +57,7 @@ export default function NeuralNetworkBackground() {
       // Fond dégradé bleu foncé -> bleu clair
       ctx.save();
       ctx.globalAlpha = 1;
-      const gradient = ctx.createRadialGradient(width / 2, height / 2, 200, width / 2, height / 2, height - 100);
+      const gradient = ctx.createRadialGradient(width / 2, height / 2, 200, width / 2, height / 2, 1.5 * height);
       gradient.addColorStop(0, "#000725ff");
       gradient.addColorStop(0.5, "#050d33ff");
       gradient.addColorStop(1, "#0a1338ff");
