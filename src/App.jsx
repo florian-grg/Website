@@ -1,4 +1,3 @@
-
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './pages/Header';
@@ -9,8 +8,6 @@ import Skills from './pages/Skills';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
-
-
 
 export default function App() {
   return (
