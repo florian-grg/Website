@@ -111,7 +111,7 @@ const About = () => (
             <span className="text-sm text-gray-500">Strasbourg (67) • Né le 16/10/2003</span>
           </p>
           <p className="text-gray-700">
-            Curieux, rigoureux et persévérant, j’ai développé un esprit critique et une forte capacité à résoudre des problèmes complexes.
+            Curieux, rigoureux et persévérant, j'ai développé un esprit critique et une forte capacité à résoudre des problèmes complexes.
           </p>
         </div>
       </motion.div>
