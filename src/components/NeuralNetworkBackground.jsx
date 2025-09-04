@@ -1,49 +1,74 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-// Animation simple de "réseau neuronal" (points et lignes animés)
+// Animation réseau neuronal stable et propre
 export default function NeuralNetworkBackground() {
   const canvasRef = useRef(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  const pointsRef = useRef([]);
+  const mouseRef = useRef({ x: 0, y: 0 });
 
+  // Met à jour la taille du canvas selon le parent
+  useEffect(() => {
+    function updateSize() {
+      const canvas = canvasRef.current;
+      if (canvas && canvas.parentElement) {
+        setSize({
+          width: canvas.parentElement.offsetWidth,
+          height: canvas.parentElement.offsetHeight
+        });
+      }
+    }
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  // Génère les points une seule fois
+  useEffect(() => {
+    if (size.width > 0 && size.height > 0 && pointsRef.current.length === 0) {
+      const POINTS = 192;
+      pointsRef.current = Array.from({ length: POINTS }, () => ({
+        x: Math.random() * size.width,
+        y: Math.random() * size.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      }));
+      mouseRef.current = { x: size.width / 2, y: size.height / 2 };
+    }
+  }, [size.width, size.height]);
+
+  // Animation et interaction
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
+    let animationId;
 
-
-    // Générer des points
-    const POINTS = 192;
-    const points = Array.from({ length: POINTS }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5
-    }));
-
-    // Neurone souris
-    let mouse = { x: width / 2, y: height / 2 };
     function handleMouseMove(e) {
       const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      mouseRef.current.x = e.clientX - rect.left;
+      mouseRef.current.y = e.clientY - rect.top;
     }
     window.addEventListener('mousemove', handleMouseMove);
 
     function draw() {
-        ctx.clearRect(0, 0, width, height);
-        // Fond dégradé bleu foncé -> bleu clair
-        ctx.save();
-        ctx.globalAlpha = 1;
-        const gradient = ctx.createRadialGradient(width / 2, height / 2, 200, width / 2, height / 2, height - 100);
-        gradient.addColorStop(0, "#000725ff");
-        gradient.addColorStop(0.5, "#050d33ff");
-        gradient.addColorStop(1, "#0a1338ff");
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
-        ctx.restore();
+      const width = size.width;
+      const height = size.height;
+      ctx.clearRect(0, 0, width, height);
+      // Fond dégradé bleu foncé -> bleu clair
+      ctx.save();
+      ctx.globalAlpha = 1;
+      const gradient = ctx.createRadialGradient(width / 2, height / 2, 200, width / 2, height / 2, height - 100);
+      gradient.addColorStop(0, "#000725ff");
+      gradient.addColorStop(0.5, "#050d33ff");
+      gradient.addColorStop(1, "#0a1338ff");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+      ctx.restore();
       // Lignes entre points proches (points)
-      for (let i = 0; i < POINTS; i++) {
-        for (let j = i + 1; j < POINTS; j++) {
+      const points = pointsRef.current;
+      const mouse = mouseRef.current;
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
           const dx = points[i].x - points[j].x;
           const dy = points[i].y - points[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -81,7 +106,7 @@ export default function NeuralNetworkBackground() {
       }
       // Neurone souris (point blanc)
       ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 7, 0, 2 * Math.PI);
+      ctx.arc(mouse.x, mouse.y, 4, 0, 2 * Math.PI);
       ctx.fillStyle = "#fff";
       ctx.shadowColor = "#60a5fa";
       ctx.shadowBlur = 16;
@@ -90,6 +115,9 @@ export default function NeuralNetworkBackground() {
     }
 
     function animate() {
+      const width = size.width;
+      const height = size.height;
+      const points = pointsRef.current;
       for (let p of points) {
         p.x += p.vx;
         p.y += p.vy;
@@ -97,20 +125,16 @@ export default function NeuralNetworkBackground() {
         if (p.y < 0 || p.y > height) p.vy *= -1;
       }
       draw();
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     }
 
-    animate();
-    function handleResize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', handleResize);
+    if (size.width > 0 && size.height > 0) animate();
+
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [size.width, size.height]);
 
   return (
     <canvas
@@ -124,8 +148,8 @@ export default function NeuralNetworkBackground() {
         zIndex: 0,
         pointerEvents: "none"
       }}
-      width={window.innerWidth}
-  height={window.innerHeight}
+      width={size.width}
+      height={size.height}
       aria-hidden="true"
     />
   );
