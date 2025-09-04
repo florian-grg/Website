@@ -20,7 +20,16 @@ export default function NeuralNetworkBackground() {
     }));
 
     function draw() {
-      ctx.clearRect(0, 0, width, height);
+        ctx.clearRect(0, 0, width, height);
+        // Fond dégradé bleu foncé -> bleu clair
+        ctx.save();
+        ctx.globalAlpha = 1;
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, "#000933ff"); // bleu foncé
+        gradient.addColorStop(1, "#21293bff"); // bleu plus clair
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        ctx.restore();
       // Lignes entre points proches
       for (let i = 0; i < POINTS; i++) {
         for (let j = i + 1; j < POINTS; j++) {
