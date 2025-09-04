@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './pages/Header';
@@ -12,6 +13,12 @@ import MentionsLegales from './pages/MentionsLegales';
 export default function App() {
   return (
     <>
+      <Helmet>
+        <title>Portfolio Florian GIURGIU</title>
+        <meta name="description" content="Développeur web, IA, optimisation, portfolio moderne et performant." />
+        <meta name="keywords" content="Florian GIURGIU, développeur, web, IA, optimisation, portfolio, freelance" />
+        <meta name="author" content="Florian GIURGIU" />
+      </Helmet>
       <Navbar />
       <div className="pt-16">
         <section id="accueil">

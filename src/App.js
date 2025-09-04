@@ -1,4 +1,3 @@
-
 import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -10,8 +9,6 @@ import Skills from './pages/Skills';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
-
-
 
 function App() {
   return (

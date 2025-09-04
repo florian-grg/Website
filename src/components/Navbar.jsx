@@ -1,4 +1,3 @@
-
 export default function Navbar() {
   return (
     <nav className="bg-white/60 backdrop-blur-lg border-b border-blue-100 fixed w-full z-20">

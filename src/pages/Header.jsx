@@ -1,4 +1,5 @@
 import React from "react";
+import NeuralNetworkBackground from "../components/NeuralNetworkBackground";
 import Seo from "../components/Seo";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations/fadeIn";
@@ -6,8 +7,9 @@ import { fadeIn } from "../animations/fadeIn";
 const Header = () => (
   <>
     <Seo title="Accueil | Portfolio Florian GIURGIU" description="Accueil du portfolio de Florian GIURGIU, développeur web et auto-entrepreneur." />
-    <header className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 py-20">
-      <div className="max-w-3xl mx-auto flex flex-col items-center text-center px-4">
+    <header className="relative overflow-hidden py-20 bg-white">
+      <NeuralNetworkBackground />
+      <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center px-4">
         <motion.img
           src="/pp.png"
           alt="Florian GIURGIU"
