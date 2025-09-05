@@ -30,8 +30,8 @@ export default function NeuralNetworkBackground() {
       pointsRef.current = Array.from({ length: POINTS }, () => ({
         x: Math.random() * size.width,
         y: Math.random() * size.height,
-        vx: (Math.random() - 0.5) * 3,
-        vy: (Math.random() - 0.5) * 3
+        vx: (Math.random() - 0.5),
+        vy: (Math.random() - 0.5)
       }));
       mouseRef.current = { x: size.width / 2, y: size.height / 2 };
     }
