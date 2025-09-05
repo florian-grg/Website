@@ -28,7 +28,7 @@ export default function NeuralNetworkBackground() {
     if (size.width > 0 && size.height > 0 && pointsRef.current.length === 0) {
       const POINTS = 64;
       pointsRef.current = Array.from({ length: POINTS }, () => ({
-        x: Math.random() < 0.5 ? 0 : size.width,
+        x: Math.random() * size.width,
         y: Math.random() * size.height,
         vx: (Math.random() - 0.5) * 3,
         vy: (Math.random() - 0.5) * 3
