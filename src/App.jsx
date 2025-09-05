@@ -20,7 +20,7 @@ export default function App() {
         <meta name="author" content="Florian GIURGIU" />
       </Helmet>
       <Navbar />
-      <div className="pt-16">
+      <div className="">
         <section id="accueil">
           <Header />
         </section>
