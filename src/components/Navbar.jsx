@@ -1,3 +1,4 @@
+import { smoothScrollTo } from "../animations/smoothScrollTo";
 import React from "react";
 
 export default function Navbar() {
@@ -43,12 +44,28 @@ export default function Navbar() {
           </span>
         </a>
         <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
-          <a href="#about" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>À propos</a>
-          <a href="#projects" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>Projets</a>
-          <a href="#experiences" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>Expériences</a>
-          <a href="#skills" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>Compétences</a>
-          <a href="#services" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>Services</a>
-          <a href="#contact" className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}>Contact</a>
+          {[
+            { href: "#about", label: "À propos" },
+            { href: "#projects", label: "Projets" },
+            { href: "#experiences", label: "Expériences" },
+            { href: "#skills", label: "Compétences" },
+            { href: "#services", label: "Services" },
+            { href: "#contact", label: "Contact" },
+          ].map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}
+              onClick={e => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  smoothScrollTo(href);
+                }
+              }}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       </div>
     </nav>

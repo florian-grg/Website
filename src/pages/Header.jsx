@@ -3,6 +3,7 @@ import NeuralNetworkBackground from "../components/NeuralNetworkBackground";
 import Seo from "../components/Seo";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations/fadeIn";
+import { smoothScrollTo } from "../animations/smoothScrollTo";
 
 const Header = () => (
   <>
@@ -46,14 +47,23 @@ const Header = () => (
           variants={fadeIn}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <a href="#contact"
+          <a
+            href="#contact"
             className="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-800 transition"
+            onClick={e => {
+              e.preventDefault();
+              smoothScrollTo('#contact');
+            }}
           >
             Me contacter
           </a>
           <a
             href="#about"
             className="bg-white text-blue-700 border border-blue-700 px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-50 transition"
+            onClick={e => {
+              e.preventDefault();
+              smoothScrollTo('#about');
+            }}
           >
             Commençons
           </a>

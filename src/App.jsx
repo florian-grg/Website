@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { pageTransition } from './animations/pageTransition';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -19,10 +20,10 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
           >
             <section id="accueil">
               <Header />
@@ -50,10 +51,10 @@ function AnimatedRoutes() {
         } />
         <Route path="/mentions-legales" element={
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
           >
             <MentionsLegales />
             <Footer />
