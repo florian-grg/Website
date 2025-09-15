@@ -38,8 +38,8 @@ const Contact = () => {
             Contact
           </h1>
           <p className="text-gray-700 mb-6 text-center">
-            Vous souhaitez discuter d’un projet ou obtenir un devis ? <br />
-            N’hésitez pas à me contacter par email ou via le formulaire ci-dessous.
+            Vous souhaitez discuter d'un projet ou obtenir un devis ? <br />
+            N'hésitez pas à me contacter par email ou via le formulaire ci-dessous.
           </p>
           <div className="flex flex-col gap-4 items-center mb-8">
             <a

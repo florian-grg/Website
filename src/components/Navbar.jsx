@@ -5,20 +5,38 @@ export default function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0.9 * window.innerHeight) {
+      if (
+        window.location.pathname === "/mentions-legales"
+      ) {
+        setScrolled(false);
+      } else if (
+        window.scrollY > 0.9 * window.innerHeight
+      ) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
+
+    // Update scroll state on scroll and on page navigation
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("popstate", handleScroll);
+    window.addEventListener("pushstate", handleScroll); // For custom navigation events if used
+
+    // Run once on mount to set initial state
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("popstate", handleScroll);
+      window.removeEventListener("pushstate", handleScroll);
+    };
   }, []);
 
   return (
     <nav className={`fixed w-full z-20 ${scrolled ? "bg-[#050d33ff]/90 backdrop-blur-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="#accueil" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src="/logo.png" alt="Logo" className="h-8 w-8" />
           <span className={"ml-2 text-2xl text-white font-extrabold tracking-tight hover:text-blue-600"}>
             Florian

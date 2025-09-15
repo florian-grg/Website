@@ -16,7 +16,7 @@ const MentionsLegales = () => (
         </div>
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Hébergement</h2>
-          <p>[Nom de l’hébergeur à compléter]</p>
+          <p>[Nom de l'hébergeur à compléter]</p>
         </div>
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Propriété intellectuelle</h2>
@@ -33,7 +33,7 @@ const MentionsLegales = () => (
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Contact</h2>
           <p>
-            Pour toute question, contactez-moi à l’adresse ci-dessus.
+            Pour toute question, contactez-moi à l'adresse ci-dessus.
           </p>
         </div>
       </div>

@@ -8,10 +8,10 @@ const Footer = () => (
                 © {new Date().getFullYear()} Florian GIURGIU. Tous droits réservés.
             </span>
             <span>
-                <a href="#mentions" className="text-blue-600 underline">Mentions légales</a>
+                <a href="mentions-legales" className="text-blue-600 underline">Mentions légales</a>
             </span>
             <span>
-                Hébergement : [Nom de l’hébergeur à compléter].
+                Hébergement : [Nom de l'hébergeur à compléter].
             </span>
             <span>
                 Contact : florian.giurgiu3@gmail.com
