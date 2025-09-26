@@ -24,6 +24,9 @@ const Footer = () => (
                 <FaGithub size={28} className="text-gray-600 hover:text-gray-800" />
             </a>
             </div>
+            <a href="https://github.com/florian-grg/Website" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                Voir le code source du site sur Github
+            </a>
         </div>
     </footer>
 );
