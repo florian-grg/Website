@@ -34,11 +34,11 @@ function AnimatedRoutes() {
             <section id="projects">
               <Projects />
             </section>
-            <section id="experiences">
-              <Experiences />
-            </section>
             <section id="skills">
               <Skills />
+            </section>
+            <section id="experiences">
+              <Experiences />
             </section>
             <section id="services">
               <Services />

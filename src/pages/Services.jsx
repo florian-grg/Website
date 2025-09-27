@@ -72,7 +72,7 @@ const services = [
 const Services = () => (
 	<>
 		<Seo title="Services | Portfolio Florian GIURGIU" description="Services proposés : création de sites web, IA, optimisation, conseil." />
-		<section className="max-w-6xl mx-auto py-16 px-6">
+		<section className="w-full py-16 px-64">
 			<h1 className="text-4xl font-bold text-blue-700 mb-10 text-center">
 				Mes Services
 			</h1>
