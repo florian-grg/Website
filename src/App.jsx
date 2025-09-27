@@ -18,6 +18,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Main landing: header + services (one-page) */}
         <Route path="/" element={
           <motion.div
             initial={pageTransition.initial}
@@ -26,6 +27,24 @@ function AnimatedRoutes() {
             transition={pageTransition.transition}
           >
             <section id="accueil">
+              <Header />
+            </section>
+            <section id="services">
+              <Services />
+            </section>
+            <Footer />
+          </motion.div>
+        } />
+
+        {/* Portfolio page: neural network + about + projects + skills + experiences */}
+        <Route path="/portfolio" element={
+          <motion.div
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
+          >
+            <section id="neural">
               <Header />
             </section>
             <section id="about">
@@ -40,9 +59,18 @@ function AnimatedRoutes() {
             <section id="experiences">
               <Experiences />
             </section>
-            <section id="services">
-              <Services />
-            </section>
+            <Footer />
+          </motion.div>
+        } />
+
+        {/* Contact-only page */}
+        <Route path="/contact" element={
+          <motion.div
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
+          >
             <section id="contact">
               <Contact />
             </section>

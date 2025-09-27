@@ -14,7 +14,7 @@ const About = () => (
         animate="visible"
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-3xl sm:text-4xl font-bold text-blue-700">À propos de moi</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-600 mb-12 text-center">À propos de moi</h1>
       </motion.div>
 
       {/* Contenu: texte plus large (3/4) et photo plus petite (1/4) sur md+ */}

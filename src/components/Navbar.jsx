@@ -1,8 +1,11 @@
 import { smoothScrollTo } from "../animations/smoothScrollTo";
 import React from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -37,29 +40,29 @@ export default function Navbar() {
   return (
     <nav className={`fixed w-full z-20 ${scrolled ? "bg-[#050d33ff]/90 backdrop-blur-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="/" className="flex items-center">
-          <img src="/logo.png" alt="Logo" className="h-8 w-8" />
-          <span className={"ml-2 text-2xl text-white font-extrabold tracking-tight hover:text-blue-600"}>
-            Florian
-          </span>
-        </a>
+        <img src="/logo.png" alt="Logo" className="h-8 w-8" />
+        <span className={"ml-2 text-2xl text-white font-extrabold tracking-tight"}>
+          Florian
+        </span>
         <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
           {[
-            { href: "#about", label: "À propos" },
-            { href: "#projects", label: "Projets" },
-            { href: "#experiences", label: "Expériences" },
-            { href: "#skills", label: "Compétences" },
-            { href: "#services", label: "Services" },
-            { href: "#contact", label: "Contact" },
-          ].map(({ href, label }) => (
+            { path: '/', label: 'Accueil' },
+            { path: '/portfolio', label: 'À propos' },
+            { path: '/contact', label: 'Contact' },
+          ].map(({ path, href, label }) => (
             <a
-              key={href}
-              href={href}
+              key={path}
+              href={path}
               className={"px-3 py-1 rounded-lg text-white font-medium hover:text-blue-600 transition"}
               onClick={e => {
-                if (window.location.pathname === "/") {
-                  e.preventDefault();
+                e.preventDefault();
+                if (location.pathname === path) {
+                  // same page: scroll directly
                   smoothScrollTo(href);
+                } else {
+                  // navigate to path then scroll after a short delay
+                  navigate(path);
+                  setTimeout(() => smoothScrollTo(href), 250);
                 }
               }}
             >

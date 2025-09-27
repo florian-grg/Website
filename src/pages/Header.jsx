@@ -4,8 +4,22 @@ import Seo from "../components/Seo";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations/fadeIn";
 import { smoothScrollTo } from "../animations/smoothScrollTo";
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const Header = () => (
+const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goTo = (path, hash) => {
+    if (location.pathname === path) {
+      smoothScrollTo(hash);
+    } else {
+      navigate(path);
+      setTimeout(() => smoothScrollTo(hash), 250);
+    }
+  };
+
+  return (
   <>
     <Seo title="Accueil | Portfolio Florian GIURGIU" description="Accueil du portfolio de Florian GIURGIU, développeur web et auto-entrepreneur." />
     <header className="relative overflow-hidden py-20 bg-white min-h-screen flex flex-col items-center justify-center">
@@ -47,30 +61,23 @@ const Header = () => (
           variants={fadeIn}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          <a
-            href="#contact"
+          <button
             className="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-800 transition"
-            onClick={e => {
-              e.preventDefault();
-              smoothScrollTo('#contact');
-            }}
+            onClick={() => goTo('/contact', '#contact')}
           >
             Me contacter
-          </a>
-          <a
-            href="#about"
+          </button>
+          <button
             className="bg-white text-blue-700 border border-blue-700 px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-50 transition"
-            onClick={e => {
-              e.preventDefault();
-              smoothScrollTo('#about');
-            }}
+            onClick={() => goTo('/portfolio', '#about')}
           >
             Commençons
-          </a>
+          </button>
         </motion.div>
       </div>
     </header>
   </>
-);
+  );
+};
 
 export default Header;

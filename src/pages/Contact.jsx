@@ -38,7 +38,7 @@ const Contact = () => {
             Contact
           </h1>
           <p className="text-gray-700 mb-6 text-center">
-            Vous souhaitez discuter d'un projet ou obtenir un devis ? <br />
+            Vous souhaitez discuter d'un projet ou obtenir un devis ? <br />
             N'hésitez pas à me contacter par email ou via le formulaire ci-dessous.
           </p>
           <div className="flex flex-col gap-4 items-center mb-8">
@@ -63,6 +63,7 @@ const Contact = () => {
               onSubmit={handleSendEmail}
               className="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg flex flex-col gap-6 mx-auto"
             >
+              {/* Nom */}
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="name"
@@ -79,6 +80,8 @@ const Contact = () => {
                   required
                 />
               </div>
+
+              {/* Email */}
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="email"
@@ -95,6 +98,32 @@ const Contact = () => {
                   required
                 />
               </div>
+
+              {/* Sujet (menu déroulant) */}
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="subject"
+                  className="text-lg font-medium text-gray-700"
+                >
+                  Sujet
+                </label>
+                <select
+                  id="subject"
+                  name="subject"
+                  className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+                  required
+                >
+                  <option value="">-- Sélectionnez un sujet --</option>
+                  <option value="devis">Création de sites web</option>
+                  <option value="collaboration">Développement d'applications</option>
+                  <option value="optimisation">Optimisation & IA</option>
+                  <option value="conseil">Conseil & accompagnement</option>
+                  <option value="question">Question générale</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              {/* Message */}
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="message"
@@ -110,9 +139,11 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
+
               {error && (
                 <div className="text-red-600 text-sm text-center">{error}</div>
               )}
+
               <button
                 type="submit"
                 disabled={loading}
