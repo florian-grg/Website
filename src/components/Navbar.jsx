@@ -38,12 +38,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-20 ${scrolled ? "bg-[#050d33ff]/90 backdrop-blur-lg" : ""}`}>
+    <nav className={`fixed w-full z-20 ${scrolled ? "bg-[#050d33ff] backdrop-blur-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <img src="/logo.png" alt="Logo" className="h-8 w-8" />
-        <span className={"ml-2 text-2xl text-white font-extrabold tracking-tight"}>
-          Florian
-        </span>
         <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
           {[
             { path: '/', label: 'Accueil' },
