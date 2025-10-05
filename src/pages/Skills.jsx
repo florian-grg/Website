@@ -115,7 +115,7 @@ const Skills = () => {
         description="Compétences techniques de Florian GIURGIU : Python, Java, IA, web, etc."
       />
       <section className="w-full py-16 px-6 md:px-12 lg:px-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-600 mb-12 text-center">Compétences</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-[#050d33] mb-12 text-center">Compétences</h1>
         <div className="mx-auto">
           <div className="rounded-2xl shadow-2xl p-8 md:p-12 overflow-hidden bg-white border border-gray-200">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 mb-8">
