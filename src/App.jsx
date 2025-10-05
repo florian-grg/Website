@@ -1,7 +1,10 @@
 import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Presentation from './pages/Presentation';
 import Header from './pages/Header';
+import HeaderPortfolio from './pages/HeaderPortfolio';
+import HeaderService from './pages/HeaderService';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Experiences from './pages/Experiences';
@@ -18,6 +21,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        
         {/* Main landing: header + services (one-page) */}
         <Route path="/" element={
           <motion.div
@@ -45,7 +49,7 @@ function AnimatedRoutes() {
             transition={pageTransition.transition}
           >
             <section id="neural">
-              <Header />
+              <HeaderPortfolio />
             </section>
             <section id="about">
               <About />
@@ -58,6 +62,24 @@ function AnimatedRoutes() {
             </section>
             <section id="experiences">
               <Experiences />
+            </section>
+            <Footer />
+          </motion.div>
+        } />
+
+        {}
+        <Route path="/service" element={
+          <motion.div
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransition.transition}
+          >
+            <section id="neural">
+              <HeaderService />
+            </section>
+            <section id="services">
+              <Services />
             </section>
             <Footer />
           </motion.div>
@@ -77,6 +99,8 @@ function AnimatedRoutes() {
             <Footer />
           </motion.div>
         } />
+
+        {/* Mentions légales page */}
         <Route path="/mentions-legales" element={
           <motion.div
             initial={pageTransition.initial}
@@ -88,6 +112,7 @@ function AnimatedRoutes() {
             <Footer />
           </motion.div>
         } />
+
       </Routes>
     </AnimatePresence>
   );
