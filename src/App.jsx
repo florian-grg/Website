@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Presentation from './pages/Presentation';
 import Header from './pages/Header';
 import HeaderPortfolio from './pages/HeaderPortfolio';
 import HeaderService from './pages/HeaderService';
@@ -9,6 +8,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Experiences from './pages/Experiences';
 import Skills from './pages/Skills';
+import Presentation from './pages/Presentation';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';

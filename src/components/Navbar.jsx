@@ -41,7 +41,7 @@ export default function Navbar() {
   return (
     <nav className={`fixed w-full py-1 z-20 ${scrolled ? "bg-[#050d33ff] backdrop-blur-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-  <img src={logo} alt="Logo" className="h-8 w-8" />
+      <img src={logo} alt="Logo" className="h-8 w-8" />
         <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
           {[
             { path: '/', label: 'Accueil', hash: '#header' },

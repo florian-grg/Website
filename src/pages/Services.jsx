@@ -1,152 +1,153 @@
-import React from "react";
-import Seo from "../components/Seo";
-import { motion } from "framer-motion";
-import { fadeIn } from "../animations/fadeIn";
+import React, { useEffect, useState, useRef } from 'react';
+import Seo from '../components/Seo';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../animations/fadeIn';
+import { Link, useLocation } from 'react-router-dom';
 
 const services = [
 	{
-		title: "Création de sites web",
-		subtitle: "Vitrine, portfolio, e-commerce léger",
+		id: 'site-web',
+		title: 'Création de sites web',
+		subtitle: 'Vitrine, portfolio, e‑commerce léger',
 		description:
-			"Sites modernes, rapides et responsives, optimisés SEO et conversion. Design sur-mesure, intégration CMS si nécessaire.",
-		benefits: ["Design sur-mesure", "SEO & performance", "Responsive & accessible"],
-		icon: (
-			<svg
-				className="w-10 h-10 text-white"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				viewBox="0 0 24 24"
-				aria-hidden
-			>
-				<rect x="3" y="4" width="18" height="16" rx="2" />
-				<path d="M3 8h18" />
-			</svg>
-		),
+			"Sites modernes, rapides et responsives, optimisés SEO et conversion. Design sur‑mesure, intégration CMS si nécessaire.",
+		benefits: ['Design sur‑mesure', "SEO & performance", 'Responsive & accessible'],
 	},
 	{
+		id: 'application',
 		title: "Développement d'applications",
-		subtitle: "Web & Desktop",
+		subtitle: 'Web & Desktop',
 		description:
-			"Applications robustes (Python, Java, C++) : API, backends, interfaces Qt, traitement d'images et pipelines ML.",
-		benefits: ["Architecture maintenable", "Intégration IA", "Tests & CI"],
-		icon: (
-			<svg
-				className="w-10 h-10 text-white"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				viewBox="0 0 24 24"
-				aria-hidden
-			>
-				<rect x="2" y="7" width="20" height="14" rx="2" />
-				<path d="M16 3v4M8 3v4" />
-			</svg>
-		),
+			"Applications robustes : API, backends, interfaces desktop, traitement de données et pipelines. Architecture maintenable et tests.",
+		benefits: ['Architecture maintenable', 'Intégration IA', 'Tests & CI'],
 	},
 	{
+		id: 'ia-optimisation',
 		title: "Optimisation & IA",
-		subtitle: "Deep Learning & Performance",
+		subtitle: 'Deep Learning & performance',
 		description:
-			"Optimisation de systèmes, modèles PyTorch, vision par ordinateur et NLP pour rendre vos produits plus intelligents et efficaces.",
-		benefits: ["Modèles performants", "Gain de précision", "Pipeline déployable"],
-		icon: (
-			<svg
-				className="w-10 h-10 text-white"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				viewBox="0 0 24 24"
-				aria-hidden
-			>
-				<circle cx="12" cy="12" r="10" />
-				<path d="M8 12h8M12 8v8" />
-			</svg>
-		),
+			"Optimisation de modèles (PyTorch), vision par ordinateur et NLP, mise en production et optimisation d'inférence pour réduire la latence et le coût.",
+		benefits: ['Modèles performants', 'Gain de précision', 'Pipeline déployable'],
 	},
 	{
-		title: "Conseil & accompagnement",
-		subtitle: "Audit & stratégie",
+		id: 'conseil-accompagnement',
+		title: 'Conseil & accompagnement',
+		subtitle: 'Audit & stratégie',
 		description:
-			"Audit technique, feuille de route produit, accompagnement projet et formation pour vos équipes.",
-		benefits: ["Audit complet", "Roadmap produit", "Accompagnement opérationnel"],
-		icon: (
-			<svg
-				className="w-10 h-10 text-white"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.5"
-				viewBox="0 0 24 24"
-				aria-hidden
-			>
-				<path d="M12 20v-6M12 4v2M6 12H4M20 12h-2" />
-			</svg>
-		),
+			"Audit technique, feuille de route produit, accompagnement projet et formation pour vos équipes — de la stratégie jusqu'à l'exécution opérationnelle.",
+		benefits: ['Audit complet', 'Roadmap produit', "Accompagnement opérationnel"],
 	},
 ];
 
-const Services = () => {
+export default function Services() {
+	const location = useLocation();
+	const [activeId, setActiveId] = useState('');
+	const containerRef = useRef(null);
+
+	// smooth scroll to hash on mount/update
+	useEffect(() => {
+		if (location.hash) {
+			const id = location.hash.replace('#', '');
+			setTimeout(() => {
+				const el = document.getElementById(id);
+				if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}, 80);
+		}
+	}, [location]);
+
+	// IntersectionObserver to highlight active section
+	useEffect(() => {
+		const sections = Array.from(document.querySelectorAll('section[data-service-id]'));
+		if (!sections.length) return;
+
+		const obs = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setActiveId(entry.target.getAttribute('data-service-id'));
+					}
+				});
+			},
+			{ root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+		);
+
+		sections.forEach((s) => obs.observe(s));
+		return () => obs.disconnect();
+	}, []);
+
 	return (
 		<>
-			<Seo
-				title="Services | Portfolio Florian GIURGIU"
-				description="Services proposés : création de sites web, IA, optimisation, conseil."
-			/>
+			<Seo title="Services | Florian GIURGIU" description="Prestations : création de sites, applications, IA et accompagnement." />
 
-			<section className="w-full py-20 px-6 md:px-12 lg:px-24">
-				<div className="max-w-7xl mx-auto">
-					<div className="text-center mb-12">
-						<h1 className="text-4xl md:text-5xl font-extrabold text-slate-900">Ce que je propose</h1>
-						<p className="mt-3 text-slate-600 max-w-2xl mx-auto">
-							Des solutions sur-mesure pour entreprises et porteurs de projets : sites, applications, intelligence artificielle et
-							accompagnement stratégique.
-						</p>
-					</div>
+			<main className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-gray-50 text-slate-900">
+				{/* Layout: sticky TOC on left (lg), content sections on right */}
+				<div ref={containerRef} className="min-h-screen mx-auto px-4 md:px-8 lg:px-18 xl:px-24 py-8 lg:grid lg:grid-cols-12 gap-8">
+					<aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start h-fit">
+						<nav className="space-y-4">
+							{services.map((s) => (
+								<a key={s.id} href={`#${s.id}`} className={`block px-4 py-3 rounded-lg ${activeId === s.id ? 'bg-[#052047] text-white shadow' : 'bg-white/60 text-slate-800 hover:bg-slate-100'}`}>
+									<span className="font-semibold block">{s.title}</span>
+									<small className="text-sm opacity-80">{s.subtitle}</small>
+								</a>
+							))}
+						</nav>
+					</aside>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{services.map((s, idx) => (
-							<motion.div
-								key={s.title}
-								variants={fadeIn}
-								initial="hidden"
-								animate="visible"
-								transition={{ delay: idx * 0.08, duration: 0.5 }}
-								className="relative rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-md border border-slate-100 shadow-lg flex flex-col justify-between"
-							>
-								<div>
-									<div className="w-16 h-16 rounded-lg bg-blue-700 flex items-center justify-center mb-4">
-										{s.icon}
+					<div className="lg:col-span-9 col-span-12">
+						<div className="snap-y snap-mandatory overflow-y-auto" style={{ scrollSnapType: 'y mandatory' }}>
+							{services.map((s, idx) => (
+								<section key={s.id} id={s.id} data-service-id={s.id} className="snap-start min-h-screen flex items-center py-20 px-6 md:px-12 lg:px-0">
+									<div className="w-full">
+										<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+											<motion.div variants={fadeIn} initial="hidden" animate="visible" transition={{ delay: idx * 0.06, duration: 0.6 }}>
+												<div className="rounded-3xl p-12 bg-white shadow-xl border border-slate-100">
+													<h2 className="text-3xl md:text-4xl font-extrabold text-[#052047]">{s.title}</h2>
+													<p className="text-slate-600 mt-2">{s.subtitle}</p>
+
+													<p className="mt-6 text-slate-700 leading-relaxed">{s.description}</p>
+
+													<ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+														{s.benefits.map((b) => (
+															<li key={b} className="flex items-start gap-3">
+																<span className="mt-1 inline-block w-3 h-3 rounded-full bg-emerald-400" aria-hidden />
+																<span className="text-slate-700">{b}</span>
+															</li>
+														))}
+													</ul>
+
+													<div className="mt-8 flex flex-col sm:flex-row gap-3">
+														<Link to="/contact#contact" className="inline-flex items-center gap-2 bg-[#052047] text-white px-5 py-3 rounded-md font-semibold">Demander un devis</Link>
+														<a href={`#${s.id}`} className="inline-flex items-center px-4 py-3 border border-slate-200 rounded-md text-slate-700">Rester sur la section</a>
+													</div>
+												</div>
+											</motion.div>
+
+											<motion.div variants={fadeIn} initial="hidden" animate="visible" transition={{ delay: idx * 0.12, duration: 0.6 }}>
+												<div className="rounded-3xl p-8 bg-gradient-to-br from-sky-100/60 to-indigo-100/40 shadow-inner h-full flex flex-col justify-center">
+													<h3 className="text-2xl font-bold mb-4">Exemples & résultats</h3>
+													<p className="text-slate-700">Exemples concrets de missions, métriques et impacts pour vous aider à comprendre la valeur apportée.</p>
+
+													<div className="mt-6 grid grid-cols-1 gap-4">
+														<div className="p-4 bg-white/80 rounded-lg">
+															<strong className="block">Projet type</strong>
+															<p className="text-sm text-slate-700">Conception d'une boutique performante — +35% de conversion, temps de chargement &lt; 1s.</p>
+														</div>
+
+														<div className="p-4 bg-white/80 rounded-lg">
+															<strong className="block">Livrables</strong>
+															<p className="text-sm text-slate-700">Design, code, documentation, plan de maintenance et formation.</p>
+														</div>
+													</div>
+												</div>
+											</motion.div>
+										</div>
 									</div>
-									<h3 className="text-xl font-bold text-slate-900 mb-1">{s.title}</h3>
-									<p className="text-sm text-slate-600 mb-3">{s.subtitle}</p>
-									<p className="text-slate-700 mb-4">{s.description}</p>
-
-									<ul className="mb-4 space-y-2">
-										{s.benefits.map((b) => (
-											<li key={b} className="text-sm text-slate-600 flex items-start gap-3">
-												<span className="inline-block w-3 h-3 mt-1 rounded-full bg-green-400" aria-hidden />
-												<span>{b}</span>
-											</li>
-										))}
-									</ul>
-								</div>
-
-								<div className="mt-4 flex items-center justify-between gap-4">
-									<a
-										href="/contact"
-										className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md transition"
-										aria-label={`Demander un devis pour ${s.title}`}
-									>
-										Demander un devis
-									</a>
-								</div>
-							</motion.div>
-						))}
+								</section>
+							))}
+						</div>
 					</div>
 				</div>
-			</section>
+			</main>
 		</>
 	);
-};
-
-export default Services;
+}
