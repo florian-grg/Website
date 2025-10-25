@@ -10,13 +10,10 @@ export default function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (
-        window.location.pathname === "/mentions-legales"
-      ) {
-        setScrolled(false);
-      } else if (
-        window.scrollY > 0.9 * window.innerHeight
-      ) {
+      // Cette condition utilise maintenant le 'location' à jour
+      if (location.pathname === "/mentions-legales" || location.pathname === "/contact") {
+        setScrolled(true);
+      } else if (window.scrollY > 0.9 * window.innerHeight) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -36,7 +33,8 @@ export default function Navbar() {
       window.removeEventListener("popstate", handleScroll);
       window.removeEventListener("pushstate", handleScroll);
     };
-  }, []);
+    // 1. CORRECTION : Ajout de 'location' au tableau de dépendances
+  }, [location]);
 
   return (
     <nav className={`fixed w-full py-1 z-20 ${scrolled ? "bg-[#050d33ff] backdrop-blur-lg" : ""}`}>
@@ -53,7 +51,8 @@ export default function Navbar() {
             return (
               <a
                 key={path}
-                href={path}
+                // 2. CORRECTION : Ajout du '#' pour un lien HashRouter correct
+                href={`#${path}`}
                 aria-current={isActive ? 'page' : undefined}
                 className={`px-3 py-1 rounded-lg font-medium transition ${isActive ? 'bg-blue-50 text-blue-700 ring-2 ring-blue-200' : 'text-white hover:text-blue-600'}`}
                 onClick={e => {
