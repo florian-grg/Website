@@ -72,7 +72,7 @@ const Header = () => {
               className="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-800 transition"
               onClick={() => goTo('/portfolio', '#about')}
             >
-              Voir ma description
+              Voir la description
             </button>
           </div>
           <a

@@ -97,6 +97,46 @@ const Services = () => {
 				description="Offres de prestation : création de sites web, IA, optimisation, conseil."
 			/>
 
+			{/* Section d'introduction "À propos de moi" avec fond blanc */}
+			<motion.section
+				variants={fadeIn}
+				initial="hidden"
+				animate="visible"
+				transition={{ duration: 0.6 }}
+				className="w-full py-20 px-6 md:px-12 lg:px-24 bg-white text-slate-900"
+			>
+				<div className="max-w-7xl mx-auto">
+					<div className="grid lg:grid-cols-3 gap-8 items-center">
+						<div className="lg:col-span-2">
+							<h1 className="text-4xl md:text-5xl font-extrabold mb-4">À propos</h1>
+							<p className="text-lg text-slate-700">
+								Ingénieur logiciel, spécialisé en développement web et en IA. J'aide les équipes à concevoir des produits performants, maintenables et orientés vers les résultats.
+							</p>
+							<p className="mt-3 text-slate-600">Curieux et pragmatique — optimisation des performances, déploiement et machine learning.</p>
+							<div className="mt-6 flex gap-3">
+								<a
+									href="#/portfolio"
+									className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md transition"
+								>
+									En savoir plus
+								</a>
+							</div>
+						</div>
+
+						<div className="w-full md:w-auto flex flex-col items-center justify-center gap-3">
+							<div className="w-48 sm:w-56 md:w-64 lg:w-72 aspect-square rounded-full overflow-hidden border-4 border-blue-700 shadow-lg">
+								<img
+									src="/pp.png"
+									alt="Portrait de Florian Giurgiu"
+									className="w-full h-full object-cover rounded-full"
+								/>
+							</div>
+							<div className="text-sm text-slate-700 text-center">Développeur full-stack et ingénieur en IA</div>
+						</div>
+					</div>
+				</div>
+			</motion.section>
+
 			<section className="w-full py-20 px-6 md:px-12 lg:px-24 bg-[#050d33] text-blue-100">
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center mb-12">
