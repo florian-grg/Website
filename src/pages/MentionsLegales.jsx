@@ -10,13 +10,11 @@ const MentionsLegales = () => (
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Éditeur du site</h2>
           <p>Florian GIURGIU</p>
-          <p>SIRET : [à compléter]</p>
-          <p>Adresse : [à compléter]</p>
           <p>Email : florian.giurgiu3@gmail.com</p>
         </div>
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Hébergement</h2>
-          <p>[Nom de l'hébergeur à compléter]</p>
+          <p>GitHub Pages</p>
         </div>
         <div>
           <h2 className="text-xl font-bold mb-2 text-blue-700">Propriété intellectuelle</h2>
