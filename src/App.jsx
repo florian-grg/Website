@@ -12,7 +12,7 @@ import Presentation from './pages/Presentation';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { pageTransition } from './animations/pageTransition';
 
