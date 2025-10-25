@@ -1,7 +1,7 @@
 import { smoothScrollTo } from "../animations/smoothScrollTo";
 import React from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../logo.svg';
+import logo from '../logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
