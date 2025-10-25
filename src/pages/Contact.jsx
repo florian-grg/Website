@@ -114,11 +114,11 @@ const Contact = () => {
                   required
                 >
                   <option value="">-- Sélectionnez un sujet --</option>
-                  <option value="devis">Création de sites web</option>
-                  <option value="collaboration">Développement d'applications</option>
-                  <option value="optimisation">Optimisation & IA</option>
-                  <option value="conseil">Conseil & accompagnement</option>
-                  <option value="question">Question générale</option>
+                  <option value="web">Création de sites web</option>
+                  <option value="application">Développement d'applications</option>
+                  <option value="optimisation-IA">Optimisation & IA</option>
+                  <option value="conseil-accompagnement">Conseil & accompagnement</option>
+                  <option value="question-generale">Question générale</option>
                   <option value="autre">Autre</option>
                 </select>
               </div>
