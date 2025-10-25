@@ -2,7 +2,7 @@
   "name": "mon-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://florian-grg.github.io/Website",
+  "homepage": "https://florian-grg.github.io",
   "dependencies": {
     "@emailjs/browser": "^3.12.1",
     "@testing-library/dom": "^10.4.1",

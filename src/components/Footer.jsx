@@ -8,10 +8,10 @@ const Footer = () => (
                 © {new Date().getFullYear()} Florian GIURGIU. Tous droits réservés.
             </span>
             <span>
-                <a href="mentions-legales" className="text-blue-600 underline">Mentions légales</a>
+                <a href="#/mentions-legales" className="text-blue-600 underline">Mentions légales</a>
             </span>
             <span>
-                Hébergement : [Nom de l'hébergeur à compléter].
+                Hébergement : GitHub Pages.
             </span>
             <span>
                 Contact : florian.giurgiu3@gmail.com
@@ -24,7 +24,7 @@ const Footer = () => (
                 <FaGithub size={28} className="text-gray-600 hover:text-gray-800" />
             </a>
             </div>
-            <a href="https://github.com/florian-grg/Website" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+            <a href="https://github.com/florian-grg/florian-grg.github.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
                 Voir le code source du site sur Github
             </a>
         </div>
