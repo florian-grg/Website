@@ -136,7 +136,7 @@ const Services = () => {
 
 								<div className="mt-4 flex items-center justify-between gap-4">
 									<a
-										href={`/service#${s.link}`}
+										href={`#/service#${s.link}`}
 										className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md transition"
 										aria-label={`Demander un devis pour ${s.title}`}
 									>

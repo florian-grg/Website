@@ -76,7 +76,7 @@ const Header = () => {
             </button>
           </div>
           <a
-            href="/CV_Florian_Giurgiu.pdf"
+            href="#/CV_Florian_Giurgiu.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#000725ff] border border-blue-700 text-blue-700 px-6 py-2 rounded-full font-semibold shadow transition hover:bg-blue-700 hover:text-white hover:border-blue-800 flex items-center"
