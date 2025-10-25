@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
   <>
-    <Seo title="Accueil | Portfolio Florian GIURGIU" description="Accueil du portfolio de Florian GIURGIU, développeur web et auto-entrepreneur." />
+    <Seo title="Accueil | Florian GIURGIU" description="Accueil du portfolio de Florian GIURGIU, développeur web et auto-entrepreneur." />
     <header className="relative overflow-hidden py-20 bg-white min-h-screen flex flex-col items-center justify-center">
       <NeuralNetworkBackground />
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center px-4">

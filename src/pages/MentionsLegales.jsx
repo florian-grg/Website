@@ -3,7 +3,7 @@ import Seo from "../components/Seo";
 
 const MentionsLegales = () => (
   <>
-    <Seo title="Mentions légales | Portfolio Florian GIURGIU" description="Mentions légales du site de Florian GIURGIU." />
+    <Seo title="Mentions légales | Florian GIURGIU" description="Mentions légales du site de Florian GIURGIU." />
     <div className="max-w-2xl mx-auto py-24">
       <h1 className="text-3xl font-bold mb-6 text-blue-700">Mentions légales</h1>
       <div className="space-y-4 text-gray-700">

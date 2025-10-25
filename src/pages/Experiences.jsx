@@ -54,7 +54,7 @@ const Badge = ({ children }) => (
 
 const Experiences = () => (
   <>
-    <Seo title="Expériences | Portfolio Florian GIURGIU" description="Expériences professionnelles et associatives de Florian GIURGIU." />
+    <Seo title="Portfolio | Florian GIURGIU" description="Expériences professionnelles et associatives de Florian GIURGIU." />
     <section className="w-full py-16 px-6 md:px-12 lg:px-24 bg-[#050d33]">
       <h1 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">Expériences</h1>
       <div className="flex flex-col gap-8">

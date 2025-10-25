@@ -111,7 +111,7 @@ const Skills = () => {
   return (
     <>
       <Seo
-        title="Compétences | Portfolio Florian GIURGIU"
+        title="Portfolio | Florian GIURGIU"
         description="Compétences techniques de Florian GIURGIU : Python, Java, IA, web, etc."
       />
       <section className="w-full py-16 px-6 md:px-12 lg:px-24">

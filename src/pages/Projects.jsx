@@ -76,7 +76,7 @@ const Badge = ({ children }) => (
 
 const Projects = () => (
   <>
-    <Seo title="Projets | Portfolio Florian GIURGIU" description="Projets réalisés par Florian GIURGIU, IA, web, optimisation." />
+    <Seo title="Portfolio | Florian GIURGIU" description="Projets réalisés par Florian GIURGIU, IA, web, optimisation." />
     <section className="w-full py-16 px-6 md:px-12 lg:px-24 bg-[#050d33]">
       <h1 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">Projets</h1>
 

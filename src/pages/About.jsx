@@ -4,7 +4,7 @@ import { fadeIn } from "../animations/fadeIn";
 
 const About = () => (
   <>
-    <Seo title="À propos | Portfolio Florian GIURGIU" description="À propos de Florian GIURGIU, développeur web, IA, optimisation." />
+    <Seo title="Portfolio | Florian GIURGIU" description="À propos de Florian GIURGIU, développeur web, IA, optimisation." />
     <section className="w-full py-16 px-6 md:px-12 lg:px-24">
       {/* Titre */}
       <motion.div

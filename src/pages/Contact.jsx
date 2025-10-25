@@ -26,7 +26,7 @@ const Contact = () => {
 
   return (
     <>
-      <Seo title="Contact | Portfolio Florian GIURGIU" description="Contactez Florian GIURGIU pour vos projets web, IA, optimisation." />
+      <Seo title="Contact | Florian GIURGIU" description="Contactez Florian GIURGIU pour vos projets web, IA, optimisation." />
       <section className="max-w-2xl mx-auto py-16 px-6 flex flex-col items-center justify-center space-y-8">
         <motion.div
           className="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 rounded-xl shadow-lg p-8 w-full"

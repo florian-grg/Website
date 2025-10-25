@@ -93,7 +93,7 @@ const Services = () => {
 	return (
 		<>
 			<Seo
-				title="Services | Portfolio Florian GIURGIU"
+				title="Florian GIURGIU"
 				description="Offres de prestation : création de sites web, IA, optimisation, conseil."
 			/>
 
