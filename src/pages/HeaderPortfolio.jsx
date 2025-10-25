@@ -32,7 +32,7 @@ const Header = () => {
           variants={fadeIn}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Florian GIURGIU
+          À propos de moi
         </motion.h1>
         <motion.h2
           className="text-xl md:text-2xl text-gray-400 font-medium mb-6"
@@ -41,7 +41,7 @@ const Header = () => {
           variants={fadeIn}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
-          Développeur Web & Auto-Entrepreneur
+          Florian GIURGIU - Étudiant Ingénieur
         </motion.h2>
         <motion.p
           className="text-gray-400 text-lg mb-8"
@@ -50,9 +50,9 @@ const Header = () => {
           variants={fadeIn}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          Je conçois des sites et applications modernes, performants et sur-mesure.
+          Étudiant en dernière année à Télécom Saint-Étienne, passionné par l'IA, le développement web et la création de solutions innovantes.
           <br />
-          Passionné, à l'écoute et force de proposition pour vos projets digitaux.
+          Découvrez mon parcours, mes compétences et mes services.
         </motion.p>
         <motion.div
           className="flex flex-col gap-4 justify-center items-center mb-6"
@@ -72,7 +72,7 @@ const Header = () => {
               className="bg-blue-700 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-blue-800 transition"
               onClick={() => goTo('/portfolio', '#about')}
             >
-              Commençons
+              Voir ma description
             </button>
           </div>
           <a

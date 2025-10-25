@@ -43,7 +43,7 @@ export default function Navbar() {
         <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
           {[
             { path: '/', label: 'Accueil', hash: '#header' },
-            { path: '/portfolio', label: 'À propos', hash: '#about' },
+            { path: '/portfolio', label: 'À propos de moi', hash: '#about' },
             { path: '/service', label: 'Services', hash: '#service' },
             { path: '/contact', label: 'Contact', hash: '#contact' },
           ].map(({ path, hash, label }) => {

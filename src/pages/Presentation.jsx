@@ -97,11 +97,11 @@ const Services = () => {
 				description="Offres de prestation : création de sites web, IA, optimisation, conseil."
 			/>
 
-			<section className="w-full py-20 px-6 md:px-12 lg:px-24">
+			<section className="w-full py-20 px-6 md:px-12 lg:px-24 bg-[#050d33] text-blue-100">
 				<div className="max-w-7xl mx-auto">
 					<div className="text-center mb-12">
-						<h1 className="text-4xl md:text-5xl font-extrabold text-slate-900">Mes différentes prestations</h1>
-						<p className="mt-3 text-slate-600 max-w-2xl mx-auto">
+						<h1 className="text-4xl md:text-5xl font-extrabold text-white">Mes différentes prestations</h1>
+						<p className="mt-3 text-blue-200/90 max-w-2xl mx-auto">
 							Des prestations sur-mesure pour entreprises et porteurs de projets : sites, applications, intelligence artificielle et accompagnement stratégique.
 						</p>
 					</div>
@@ -114,19 +114,19 @@ const Services = () => {
 								initial="hidden"
 								animate="visible"
 								transition={{ delay: idx * 0.08, duration: 0.5 }}
-								className="relative rounded-2xl overflow-hidden p-6 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-md border border-slate-100 shadow-lg flex flex-col justify-between"
+								className="relative rounded-2xl overflow-hidden p-6 bg-white/5 backdrop-blur-md border border-white/10 shadow-lg flex flex-col justify-between"
 							>
 								<div>
 									<div className="w-16 h-16 rounded-lg bg-blue-700 flex items-center justify-center mb-4">
 										{s.icon}
 									</div>
-									<h3 className="text-xl font-bold text-slate-900 mb-1">{s.title}</h3>
-									<p className="text-sm text-slate-600 mb-3">{s.subtitle}</p>
-									<p className="text-slate-700 mb-4">{s.description}</p>
+									<h3 className="text-xl font-bold text-white mb-1">{s.title}</h3>
+									<p className="text-sm text-blue-200/90 mb-3">{s.subtitle}</p>
+									<p className="text-blue-200/90 mb-4">{s.description}</p>
 
 									<ul className="mb-4 space-y-2">
 										{s.benefits.map((b) => (
-											<li key={b} className="text-sm text-slate-600 flex items-start gap-3">
+											<li key={b} className="text-sm text-blue-200/90 flex items-start gap-3">
 												<span className="inline-block w-3 h-3 mt-1 rounded-full bg-green-400" aria-hidden />
 												<span>{b}</span>
 											</li>
