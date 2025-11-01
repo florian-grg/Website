@@ -40,11 +40,12 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <img src={logo} alt="Logo" className="h-8 w-8 rounded" />
+        {/* hidden on small screens, visible from sm and up */}
+        <img src={logo} alt="Logo" className="hidden sm:block h-8 w-8 rounded" />
         <div className="w-full flex flex-wrap gap-x-2 justify-end items-center">
           {[
             { path: "/", label: "Accueil", hash: "#header" },
-            { path: "/portfolio", label: "À propos de moi", hash: "#about" },
+            { path: "/portfolio", label: "Portfolio", hash: "#about" },
             { path: "/service", label: "Services", hash: "#service" },
             { path: "/contact", label: "Contact", hash: "#contact" },
           ].map(({ path, hash, label }) => {
