@@ -2,21 +2,9 @@ import React, { useState } from "react";
 import Seo from "../components/Seo";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations/fadeIn";
+import SKILLS from "../data/skillsData";
 
-const SKILLS = [
-  { name: "Python", category: "Langages", level: 92, years: 5, tech: ["PyTorch", "NumPy"] },
-  { name: "JavaScript", category: "Langages", level: 85, years: 4, tech: ["React", "Node"] },
-  { name: "Java", category: "Langages", level: 78, years: 4, tech: ["OOP", "Qt"] },
-  { name: "C/C++", category: "Langages", level: 74, years: 3, tech: ["Embedded", "Optimisation"] },
-  { name: "SQL", category: "Databases", level: 80, years: 3, tech: ["Postgres", "SQLite"] },
-  { name: "PyTorch (Deep Learning)", category: "IA", level: 88, years: 3, tech: ["CNN", "Training"] },
-  { name: "MATLAB", category: "Outils", level: 68, years: 2, tech: ["Simulations"] },
-  { name: "HTML", category: "Web", level: 86, years: 4, tech: ["Semantics"] },
-  { name: "CSS", category: "Web", level: 82, years: 4, tech: ["Tailwind", "Responsive"] },
-  { name: "Qt (GUI)", category: "Outils", level: 70, years: 2, tech: ["Interfaces"] },
-  { name: "LaTeX", category: "Outils", level: 75, years: 4, tech: ["Docs", "Reports"] },
-  { name: "Git", category: "Outils", level: 90, years: 5, tech: ["Workflows"] },
-];
+// Données importées depuis src/data/skillsData.js
 
 const getUniqueCategories = (list) => ["Tous", ...Array.from(new Set(list.map((s) => s.category)))];
 
@@ -111,11 +99,11 @@ const Skills = () => {
   return (
     <>
       <Seo
-        title="Portfolio | Florian GIURGIU"
+        title="Florian GIURGIU — Compétences"
         description="Compétences techniques de Florian GIURGIU : Python, Java, IA, web, etc."
       />
-      <section className="w-full py-16 px-6 md:px-12 lg:px-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#050d33] mb-12 text-center">Compétences</h1>
+      <section className="w-full py-20 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-white via-blue-50 to-purple-50 text-black">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-12 text-center">Compétences</h1>
         <div className="mx-auto">
           <div className="rounded-2xl shadow-2xl p-8 md:p-12 overflow-hidden bg-white border border-gray-200">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-6 mb-8">
@@ -128,7 +116,7 @@ const Skills = () => {
                     className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
                       category === cat
                         ? "bg-slate-900 text-white ring-2 ring-slate-100/10"
-                        : "bg-slate-100 text-slate-800 hover:bg-slate-200"
+                        : "bg-slate-100 text-black hover:bg-slate-200"
                     }`}
                     aria-pressed={category === cat}
                   >
@@ -152,17 +140,17 @@ const Skills = () => {
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: idx * 0.04, duration: 0.3 }}
-                  className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 border border-gray-100 hover:shadow transition"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-white border border-slate-100 hover:shadow transition"
                 >
                   <Logo name={s.name} />
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <h3 className="text-lg font-semibold text-slate-900 leading-tight">{s.name}</h3>
-                        <div className="text-xs text-slate-500">Catégorie • {s.category} • {s.years} ans</div>
+                        <h3 className="text-lg font-semibold text-black leading-tight">{s.name}</h3>
+                        <div className="text-xs text-black">Catégorie • {s.category} • {s.years} ans</div>
                       </div>
-                      <div className="text-sm text-slate-700 font-medium">{s.level}%</div>
+                      <div className="text-sm text-black font-medium">{s.level}%</div>
                     </div>
 
                     <div className="mt-3">
@@ -175,7 +163,7 @@ const Skills = () => {
 
                       <div className="mt-2 flex flex-wrap gap-2">
                         {s.tech.map((t) => (
-                          <span key={t} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md">
+                          <span key={t} className="text-xs bg-slate-100 text-black px-2 py-1 rounded-md">
                             {t}
                           </span>
                         ))}

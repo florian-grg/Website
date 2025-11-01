@@ -10,22 +10,17 @@ export default function Navbar() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Cette condition utilise maintenant le 'location' à jour
-      if (location.pathname === "/mentions-legales" || location.pathname === "/contact") {
-        setScrolled(true);
-      } else if (window.scrollY > 0.9 * window.innerHeight) {
-        setScrolled(true);
-      } else {
+      if (location.pathname === "/") {
         setScrolled(false);
+      } else {
+        setScrolled(true);
       }
     };
 
-    // Update scroll state on scroll and on page navigation
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("popstate", handleScroll);
-    window.addEventListener("pushstate", handleScroll); // For custom navigation events if used
+    window.addEventListener("pushstate", handleScroll);
 
-    // Run once on mount to set initial state
     handleScroll();
 
     return () => {
@@ -33,35 +28,49 @@ export default function Navbar() {
       window.removeEventListener("popstate", handleScroll);
       window.removeEventListener("pushstate", handleScroll);
     };
-    // 1. CORRECTION : Ajout de 'location' au tableau de dépendances
   }, [location]);
 
+  const isHome = location.pathname === "/";
+  const darkText = scrolled || !isHome; // true => texte noir, false => texte blanc
+
   return (
-    <nav className={`fixed w-full py-1 z-20 ${scrolled ? "bg-[#050d33ff] backdrop-blur-lg" : ""}`}>
+    <nav
+      className={`fixed w-full z-20 transition-colors duration-300 ${
+        scrolled ? "bg-white/80 backdrop-blur border-b border-slate-200" : isHome ? "bg-transparent" : "bg-white/80 backdrop-blur border-b border-slate-200"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <img src={logo} alt="Logo" className="h-8 w-8" />
-        <div className="w-full flex flex-wrap space-x-4 space-y-0 justify-end items-center">
+        <img src={logo} alt="Logo" className="h-8 w-8 rounded" />
+        <div className="w-full flex flex-wrap gap-x-2 justify-end items-center">
           {[
-            { path: '/', label: 'Accueil', hash: '#header' },
-            { path: '/portfolio', label: 'À propos de moi', hash: '#about' },
-            { path: '/service', label: 'Services', hash: '#service' },
-            { path: '/contact', label: 'Contact', hash: '#contact' },
+            { path: "/", label: "Accueil", hash: "#header" },
+            { path: "/portfolio", label: "À propos de moi", hash: "#about" },
+            { path: "/service", label: "Services", hash: "#service" },
+            { path: "/contact", label: "Contact", hash: "#contact" },
           ].map(({ path, hash, label }) => {
             const isActive = location.pathname === path;
+
+            const activeClass = darkText
+              ? "bg-blue-50 ring-2 ring-blue-200 text-blue-700"
+              : "bg-blue-50 ring-2 ring-blue-200 text-blue-700";
+
+            const inactiveClass = darkText
+              ? "hover:text-blue-700 hover:bg-slate-100"
+              : "text-white hover:text-blue-200 hover:bg-white/10";
+
             return (
               <a
                 key={path}
-                // 2. CORRECTION : Ajout du '#' pour un lien HashRouter correct
                 href={`#${path}`}
-                aria-current={isActive ? 'page' : undefined}
-                className={`px-3 py-1 rounded-lg font-medium transition ${isActive ? 'bg-blue-50 text-blue-700 ring-2 ring-blue-200' : 'text-white hover:text-blue-600'}`}
-                onClick={e => {
+                aria-current={isActive ? "page" : undefined}
+                className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                  isActive ? activeClass : inactiveClass
+                }`}
+                onClick={(e) => {
                   e.preventDefault();
                   if (location.pathname === path) {
-                    // same page: scroll directly to the hash if present
                     if (hash) smoothScrollTo(hash);
                   } else {
-                    // navigate to path then scroll after a short delay
                     navigate(path);
                     if (hash) setTimeout(() => smoothScrollTo(hash), 250);
                   }

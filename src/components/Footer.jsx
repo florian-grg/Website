@@ -2,7 +2,7 @@ import React from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
-    <footer className="bg-gray-100 text-gray-600 py-6 mt-12 border-t">
+    <footer className="bg-gray-100 text-gray-600 py-6 border-t">
         <div className="container mx-auto px-4 flex flex-wrap items-center justify-center gap-6 text-sm">
             <span>
                 © {new Date().getFullYear()} Florian GIURGIU. Tous droits réservés.

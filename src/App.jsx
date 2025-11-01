@@ -3,13 +3,11 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './pages/Header';
 import HeaderPortfolio from './pages/HeaderPortfolio';
-import HeaderService from './pages/HeaderService';
-import About from './pages/About';
 import Projects from './pages/Projects';
 import Experiences from './pages/Experiences';
 import Skills from './pages/Skills';
-import Presentation from './pages/Presentation';
 import Services from './pages/Services';
+import Service from './pages/Service';
 import Contact from './pages/Contact';
 import MentionsLegales from './pages/MentionsLegales';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
@@ -33,10 +31,6 @@ function AnimatedRoutes() {
             <section id="accueil">
               <Header />
             </section>
-            <section id="presentation">
-              <Presentation />
-            </section>
-            <Footer />
           </motion.div>
         } />
 
@@ -51,9 +45,6 @@ function AnimatedRoutes() {
             <section id="neural">
               <HeaderPortfolio />
             </section>
-            <section id="about">
-              <About />
-            </section>
             <section id="projects">
               <Projects />
             </section>
@@ -67,7 +58,7 @@ function AnimatedRoutes() {
           </motion.div>
         } />
 
-        {}
+        {/* Service page */}
         <Route path="/service" element={
           <motion.div
             initial={pageTransition.initial}
@@ -75,11 +66,11 @@ function AnimatedRoutes() {
             exit={pageTransition.exit}
             transition={pageTransition.transition}
           >
-            <section id="neural">
-              <HeaderService />
-            </section>
             <section id="services">
               <Services />
+            </section>
+            <section id="service">
+              <Service />
             </section>
             <Footer />
           </motion.div>
